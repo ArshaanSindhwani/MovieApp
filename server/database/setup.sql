@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS films;
 DROP TABLE IF EXISTS films_watched;
+DROP TABLE IF EXISTS films;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     user_id INT GENERATED ALWAYS AS IDENTITY,
@@ -16,8 +16,9 @@ CREATE TABLE films (
     director VARCHAR(100) NOT NULL,
     notable_actors VARCHAR(200) NOT NULL,
     year_released DATE NOT NULL,
-    external_rating INT NOT NULL,
-    poster_img_url VARCHAR(100) NOT NULL,
+    external_rating NUMERIC(4,1) NOT NULL DEFAULT 0,
+    poster_img_url VARCHAR(300) NOT NULL,
+    added_by INT REFERENCES users(user_id) ON DELETE SET NULL,
     PRIMARY KEY (film_id)
 );
 
@@ -37,7 +38,7 @@ VALUES
         'Jim Sharman',
         'Tim Curry, Susan Sarandon, Barry Bostwick',
         '1975-01-01',
-        '0',
+        0,
         ''
     ),
     (
@@ -46,7 +47,7 @@ VALUES
         'Ridley Scott',
         'Harrison Ford, Rutger Hauer, Sean Young',
         '1982-01-01',
-        '0',
+        0,
         ''
     ),
     (
@@ -55,8 +56,8 @@ VALUES
         'Richard Kelly',
         'Jake Gyllenhaal, Jena Malone, Patrick Swayze',
         '2001-01-01',
-        '0',
-        ''    
+        0,
+        ''
     ),
     (
         'Fight Club',
@@ -64,7 +65,7 @@ VALUES
         'David Fincher',
         'Brad Pitt, Edward Norton, Helena Bonham Carter',
         '1999-01-01',
-        '0',
+        0,
         ''
     ),
     (
@@ -73,7 +74,7 @@ VALUES
         'Joel Coen',
         'Jeff Bridges, John Goodman, Julianne Moore',
         '1998-01-01',
-        '0',
+        0,
         ''
     );
 
@@ -83,6 +84,7 @@ CREATE TABLE films_watched (
     user_id INT NOT NULL,
     root_user_rating INT NOT NULL,
     PRIMARY KEY (films_watched_id),
-    FOREIGN KEY (film_id) REFERENCES films(film_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-)
+    FOREIGN KEY (film_id) REFERENCES films(film_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    CONSTRAINT uq_user_film UNIQUE (user_id, film_id)
+);

@@ -13,6 +13,7 @@ class User {
       [username, hashedPassword],
     );
 
+    if (!response.rows[0]) throw new Error('User could not be created.');
     return new User(response.rows[0]);
   }
 
@@ -22,22 +23,17 @@ class User {
       [username],
     );
 
-    if (response.rows.length === 0) {
-      return null;
-    }
-
+    if (response.rows.length === 0) return null;
     return new User(response.rows[0]);
   }
 
   static async findById(id) {
-    const response = await db.query("SELECT * FROM users WHERE user_id = $1;", [
-      id,
-    ]);
+    const response = await db.query(
+      "SELECT * FROM users WHERE user_id = $1;",
+      [id],
+    );
 
-    if (response.rows.length === 0) {
-      return null;
-    }
-
+    if (response.rows.length === 0) return null;
     return new User(response.rows[0]);
   }
 
@@ -55,10 +51,7 @@ class User {
       [id],
     );
 
-    if (response.rows.length === 0) {
-      return null;
-    }
-
+    if (response.rows.length === 0) return null;
     return new User(response.rows[0]);
   }
 }
