@@ -9,7 +9,7 @@ body {
 .phone {
   width: 390px;
   height: 844px;
-  background: #fff;
+  background: #183c3a;
   border-radius: 50px;
   border: 8px solid #222;
   overflow: hidden;
@@ -23,6 +23,9 @@ body {
   padding: 60px 24px 24px;
   box-sizing: border-box;
   text-align: center;
+  background: 
+    radial-gradient(circle at top, rgba(128, 255, 224, 0.2), transparent 30%),
+    linear-gradient(180deg, #2d7d76 0%, #183c3a 55%, #112726 100%);
 }
 
 .content {
@@ -34,6 +37,7 @@ body {
 
 h1 {
     margin-bottom: 200px;
+    color: #f3fffc;
 }
 
 input {
@@ -50,14 +54,16 @@ a {
     text-decoration: none;
     display: block;
     margin: 12px;
+    color: #f3fffc;
 }
 
 button {
     padding: 7px;
-    background: #f0f0f0;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 8px;
     font-size: 16px;
+    background: linear-gradient(90deg, #7fffd4 0%, #53e6b7 100%);
+    color: #123330;
 }
 
 hr {
