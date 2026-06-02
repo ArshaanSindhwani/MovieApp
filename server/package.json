@@ -4,10 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "seed-db": "node ./database/setup.js"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "__tests__/integration/config.js"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -25,6 +31,6 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "nodemon": "^3.1.14",
-    "supertest": "^7.2.2"
+    "supertest": "6.3.3"
   }
 }
