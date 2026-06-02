@@ -1,7 +1,15 @@
-const db = require('../database/connect');
+const db = require("../database/connect");
 
 class Rating {
-  constructor({ films_watched_id, film_id, user_id, root_user_rating, username, film_name, poster_img_url }) {
+  constructor({
+    films_watched_id,
+    film_id,
+    user_id,
+    root_user_rating,
+    username,
+    film_name,
+    poster_img_url,
+  }) {
     this.films_watched_id = films_watched_id;
     this.film_id = film_id;
     this.user_id = user_id;
@@ -12,30 +20,29 @@ class Rating {
   }
 
   static async create(userId, filmId, rating) {
-    try {
-      const response = await db.query(
-        `INSERT INTO films_watched (user_id, film_id, root_user_rating)
-         VALUES ($1, $2, $3) RETURNING *;`,
-        [userId, filmId, rating]
-      );
-      if (response.rows.length === 0) {
-        throw new Error('Could not add film to watched list.');
-      }
-      return new Rating(response.rows[0]);
-    } catch (error) {
-      throw new Error(error.message);
-    }
+    const response = await db.query(
+      `INSERT INTO films_watched (user_id, film_id, root_user_rating)
+       VALUES ($1, $2, $3)
+       RETURNING *;`,
+      [userId, filmId, rating],
+    );
+
+    return new Rating(response.rows[0]);
   }
 
   static async updateRating(userId, filmId, rating) {
     const response = await db.query(
-      `UPDATE films_watched SET root_user_rating = $3
-       WHERE user_id = $1 AND film_id = $2 RETURNING *;`,
-      [userId, filmId, rating]
+      `UPDATE films_watched 
+       SET root_user_rating = $3
+       WHERE user_id = $1 AND film_id = $2
+       RETURNING *;`,
+      [userId, filmId, rating],
     );
+
     if (response.rows.length === 0) {
-      throw new Error('Rating not found.');
+      return null;
     }
+
     return new Rating(response.rows[0]);
   }
 
@@ -46,9 +53,10 @@ class Rating {
        JOIN users ON films_watched.user_id = users.user_id
        WHERE films_watched.film_id = $1
        ORDER BY films_watched.films_watched_id DESC;`,
-      [filmId]
+      [filmId],
     );
-    return response.rows.map(r => new Rating(r));
+
+    return response.rows.map((rating) => new Rating(rating));
   }
 
   static async findByUser(userId) {
@@ -58,9 +66,10 @@ class Rating {
        JOIN films ON films_watched.film_id = films.film_id
        WHERE films_watched.user_id = $1
        ORDER BY films_watched.films_watched_id DESC;`,
-      [userId]
+      [userId],
     );
-    return response.rows.map(r => new Rating(r));
+
+    return response.rows.map((rating) => new Rating(rating));
   }
 }
 
