@@ -92,7 +92,8 @@ body {
 }
 
 .input-group input::placeholder {
-    border-color: #e6fffa;
+    border-color: #d8f8f1;
+    opacity:1;
 }
 
 .input-group input:focus {
