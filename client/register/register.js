@@ -1,4 +1,4 @@
-const signupForm = document.getElementById('signup-form');
+const registerForm = document.getElementById('registerForm');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const usernameInput = document.getElementById('username');
@@ -11,10 +11,10 @@ const userData = {
     username: ''
 };
 
-signupForm.addEventListener('submit', handleSignup);
+registerForm.addEventListener('submit', handleRegister);
 loginBtn.addEventListener('click', goToLoginPage);
 
-function handleSignup(event) {
+function handleRegister(event) {
     event.preventDefault();
 
     userData.email = emailInput.value.trim();
@@ -37,9 +37,9 @@ function handleSignup(event) {
         return;
     }
 
-    console.log('Signup details:', userData);
-    showMessage('Sign up details captured successfully.');
-    signupForm.reset();
+    console.log('Register details:', userData);
+    showMessage('Register details captured successfully.');
+    registerForm.reset();
 }
 
 function showMessage(text) {
