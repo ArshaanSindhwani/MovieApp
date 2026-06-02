@@ -92,11 +92,11 @@ body {
 }
 
 .input-group input::placeholder {
-    border-color: #a8d7cf;
+    border-color: #e6fffa;
 }
 
 .input-group input:focus {
-    border-color: #8fffe3;
+    border-color: #d8f8f1;
   box-shadow: 0 0 0 2px rgba(143, 255, 227, 0.18);
 }
 
