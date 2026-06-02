@@ -8,7 +8,7 @@ const fs = require("fs");
 const db = require("./connect");
 
 // Reads SQL file and converts it into a string
-const sql = fs.readFileSync("./server/database/setup.sql").toString();
+const sql = fs.readFileSync("./database/setup.sql").toString();
 
 // Runs SQL against database
 db.query(sql)
