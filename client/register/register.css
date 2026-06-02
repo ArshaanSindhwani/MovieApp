@@ -5,18 +5,18 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(180deg, #1b123d 0%, #090612 100%);
+    background: linear-gradient(180deg, #6ee7e7 0%, #2f8f83 100%);
 }
 
 .phone {
     width: 390px;
     height: 844px;
-    background: #0f0b23;
+    background: #183c3a;
     border-radius: 50px;
-    border: 8px solid #1f1a39;
+    border: 8px solid #1e2a2a;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
 .screen {
@@ -26,11 +26,11 @@ body {
     padding: 60px 24px 24px;
     box-sizing: border-box;
     background: 
-        radial-gradient(circle at top, rgba(120, 74, 255, 0.35), transparent 30%),
-        linear-gradient(180deg, #120d2e 0%, #090612 100%);
+        radial-gradient(circle at top, rgba(128, 255, 224, 0.2), transparent 30%),
+        linear-gradient(180deg, #2d7d76 0%, #183c3a 55%, #112726 100%);
 }
 
-.signup-page {
+.register-page {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -41,28 +41,29 @@ body {
     text-align: center;
     font-size: 18px;
     font-weight: 700;
-    color: #c9c2ff;
+    color: #d7fff6;
 }
 
-.signup-header {
+.register-header {
     text-align: center;
 }
 
-.signup-header h1 {
+.register-header h1 {
     margin: 0 0 12px;
     font-size: 38px;
     font-weight: 700;
-    color: #f5f3ff;
+    line-height: 1.05;
+    color: #f3fffc;
 }
 
 .quote-text {
     margin: 0;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.4;
-    color: #b8b2d9;
+    color: #c6f3ea;
 }
 
-#signup-form {
+#register-form {
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -77,38 +78,38 @@ body {
 .input-group label {
     font-size: 16px;
     font-weight: 600;
-    color: #f5f3ff;
+    color: #f3fffc;
 }
 
 .input-group input {
     padding: 16px;
     font-size: 16px;
-    border: 1px solid #2b2357;
-    background: #1a143d;
-    color:#f5f3ff;
+    border: 1px solid #4e9d95;
+    background: rgba(28, 80, 77, 0.95);
+    color:#f3fffc;
     border-radius: 14px;
     outline: none;
 }
 
 .input-group input::placeholder {
-    border-color: #8f88b2;
+    border-color: #a8d7cf;
 }
 
 .input-group input:focus {
-    border-color: #7c5cff;
-    box-shadow: 0 0 0 2px rgba(124, 92, 255, 0.2);
+    border-color: #8fffe3;
+  box-shadow: 0 0 0 2px rgba(143, 255, 227, 0.18);
 }
 
-#signup-btn {
+#register-btn {
     margin-top: 10px;
-    padding: 14px;
-    border: none;
-    background: linear-gradient(90deg, #6c4cff 0%, #8a6bff 100%);
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 14px;
-    cursor: pointer;
+  padding: 14px;
+  border: none;
+  background: linear-gradient(90deg, #7fffd4 0%, #53e6b7 100%);
+  color: #123330;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 14px;
+  cursor: pointer;
 }
 
 #message {
@@ -116,7 +117,7 @@ body {
     min-height: 24px;
     text-align:center;
     font-size: 15px;
-    color: #c9c2ff;
+    color: #d7fff6;
 }
 
 .login-link-container {
@@ -125,15 +126,15 @@ body {
 
 .login-link-container p {
     margin: 0 0 10px;
-    color: #b8b2d9;
+    color: #c6f3ea;
 }
 
 #login-btn {
     padding: 10px 18px;
-    border: 1px solid #2b2357;
-    background: #1a143d;
-    color: #f5f3ff;
-    font-size: 16px;
+    border: 1px solid #4e9d95;
+    background: rgba(28, 80, 77, 0.95);
+    color: #f3fffc;
+    font-size: 16px; 
     font-weight: 700;
     border-radius: 12px;
     cursor: pointer;
