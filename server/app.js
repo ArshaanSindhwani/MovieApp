@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use('/auth', authRouter);
 app.use('/movies', moviesRouter);
-app.use('/movies', ratingsRouter);
-app.use('/movies', externalRouter);
+app.use('/ratings', ratingsRouter);
+app.use('/external', externalRouter);
 
 module.exports = app;
