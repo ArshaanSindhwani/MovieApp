@@ -44,7 +44,7 @@ describe('Movies Endpoints', () => {
             expect(response.body).toBeInstanceOf(Array);
         });
 
-        it('should return 403 with no token', async () => {
+        it('should return 401 with no token', async () => {
             const response = await request(api).get('/movies');
             expect(response.status).toBe(401);
         });
@@ -64,7 +64,16 @@ describe('Movies Endpoints', () => {
             expect(response.body).toHaveProperty('film_id');
         });
 
-        it('should return 403 with no token', async () => {
+        it('should return 400 if required fields are missing', async () => {
+            const response = await request(api)
+                .post('/movies')
+                .set('Authorization', `Bearer ${token}`)
+                .send({ film_name: 'Incomplete Film' });
+
+            expect(response.status).toBe(400);
+        });
+
+        it('should return 401 with no token', async () => {
             const response = await request(api).post('/movies').send(testFilm);
             expect(response.status).toBe(401);
         });
@@ -110,6 +119,35 @@ describe('Movies Endpoints', () => {
                 .set('Authorization', `Bearer ${token}`);
 
             expect(response.status).toBe(200);
+        });
+
+        it('should return 403 if user does not own the film', async () => {
+            const created = await request(api)
+                .post('/movies')
+                .set('Authorization', `Bearer ${token}`)
+                .send(testFilm);
+
+            await request(api)
+                .post('/auth/register')
+                .send({ username: 'otheruser', password: 'testpassword' });
+            const otherLogin = await request(api)
+                .post('/auth/login')
+                .send({ username: 'otheruser', password: 'testpassword' });
+            const otherToken = otherLogin.body.token;
+
+            const response = await request(api)
+                .delete(`/movies/${created.body.film_id}`)
+                .set('Authorization', `Bearer ${otherToken}`);
+
+            expect(response.status).toBe(403);
+        });
+
+        it('should return 404 if film does not exist', async () => {
+            const response = await request(api)
+                .delete('/movies/99999')
+                .set('Authorization', `Bearer ${token}`);
+
+            expect(response.status).toBe(404);
         });
 
     });
