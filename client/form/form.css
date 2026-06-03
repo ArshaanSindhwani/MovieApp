@@ -186,9 +186,10 @@ body {
 .nav-btn {
     background: none;
     border: none;
-    font-size: 22px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    padding: 8px;
+    padding: 8px 12px;
     border-radius: 12px;
     color: #d7fff6;
     transition: background 0.15s;
