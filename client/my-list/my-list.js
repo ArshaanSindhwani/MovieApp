@@ -8,7 +8,7 @@ const myListBtn = document.querySelector("#mylist-btn");
 const formBtn = document.querySelector("#form-btn");
 
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     getMovies();
 
     homeBtn.addEventListener("click", goToHomePage);
@@ -77,7 +77,7 @@ function formatYear(yearReleased) {
 }
 
 function goToHomePage() {
-    window.location.href = "../home/home.html"
+    window.location.href = "../homepage/home.html"
 }
 
 function goToMyListPage() {
