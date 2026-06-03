@@ -4,16 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand --forceExit",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "seed-db": "node ./database/setup.js"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "__tests__/integration/config.js"
-    ]
   },
   "keywords": [],
   "author": "",
@@ -29,8 +22,6 @@
     "pg": "^8.20.0"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
-    "nodemon": "^3.1.14",
-    "supertest": "6.3.3"
+    "nodemon": "^3.1.14"
   }
 }
