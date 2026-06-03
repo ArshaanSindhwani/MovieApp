@@ -1,4 +1,7 @@
-const registerForm = document.getElementById('registerForm');
+console.log('register.js is connected');
+
+
+const registerForm = document.getElementById('register-form');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const usernameInput = document.getElementById('username');
@@ -44,8 +47,4 @@ function handleRegister(event) {
 
 function showMessage(text) {
     message.textContent = text;
-}
-
-function goToLoginPage() {
-    window.location.href = '../index.html';
 }
