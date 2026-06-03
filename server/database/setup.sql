@@ -6,6 +6,7 @@ CREATE TABLE users (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(100) NOT NULL,
     password VARCHAR(200) NOT NULL,
+    is_admin BOOLEAN NOT NULL DEFAULT false,
     PRIMARY KEY (user_id)
 );
 
@@ -15,7 +16,7 @@ CREATE TABLE films (
     producer VARCHAR(100) NOT NULL,
     director VARCHAR(100) NOT NULL,
     notable_actors VARCHAR(200) NOT NULL,
-    year_released DATE NOT NULL,
+    year_released INT NOT NULL,
     external_rating NUMERIC(4,1) NOT NULL DEFAULT 0,
     poster_img_url VARCHAR(300) NOT NULL,
     added_by INT REFERENCES users(user_id) ON DELETE SET NULL,
@@ -37,7 +38,7 @@ VALUES
         'Lou Adler, Michael White',
         'Jim Sharman',
         'Tim Curry, Susan Sarandon, Barry Bostwick',
-        '1975-01-01',
+        1975,
         0,
         ''
     ),
@@ -46,7 +47,7 @@ VALUES
         'Michael Deeley',
         'Ridley Scott',
         'Harrison Ford, Rutger Hauer, Sean Young',
-        '1982-01-01',
+        1982,
         0,
         ''
     ),
@@ -55,7 +56,7 @@ VALUES
         'Adam Fields, Sean McKittrick',
         'Richard Kelly',
         'Jake Gyllenhaal, Jena Malone, Patrick Swayze',
-        '2001-01-01',
+        2001,
         0,
         ''
     ),
@@ -64,7 +65,7 @@ VALUES
         'Art Linson, Ross Grayson Bell',
         'David Fincher',
         'Brad Pitt, Edward Norton, Helena Bonham Carter',
-        '1999-01-01',
+        1999,
         0,
         ''
     ),
@@ -73,7 +74,7 @@ VALUES
         'Ethan Coen',
         'Joel Coen',
         'Jeff Bridges, John Goodman, Julianne Moore',
-        '1998-01-01',
+        1998,
         0,
         ''
     );

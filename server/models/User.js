@@ -1,10 +1,11 @@
 const db = require("../database/connect");
 
 class User {
-  constructor({ user_id, username, password }) {
+  constructor({ user_id, username, password, is_admin }) {
     this.user_id = user_id;
     this.username = username;
     this.password = password;
+    this.is_admin = is_admin || false;
   }
 
   static async create(username, hashedPassword) {
