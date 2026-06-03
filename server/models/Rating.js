@@ -27,22 +27,20 @@ class Rating {
       [userId, filmId, rating],
     );
 
+    if (!response.rows[0]) throw new Error('Rating could not be created.');
     return new Rating(response.rows[0]);
   }
 
   static async updateRating(userId, filmId, rating) {
     const response = await db.query(
-      `UPDATE films_watched 
+      `UPDATE films_watched
        SET root_user_rating = $3
        WHERE user_id = $1 AND film_id = $2
        RETURNING *;`,
       [userId, filmId, rating],
     );
 
-    if (response.rows.length === 0) {
-      return null;
-    }
-
+    if (response.rows.length === 0) return null;
     return new Rating(response.rows[0]);
   }
 
