@@ -11,7 +11,7 @@ function goToHomePage() {
 }
 
 function goToMyListPage() {
-    window.location.href = '../mylist/mylist.html';
+    window.location.href = '../my-list/my-list.html';
 }
 
 function goToFormPage() {
