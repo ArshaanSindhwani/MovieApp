@@ -1,50 +1,64 @@
-console.log('register.js is connected');
+console.log("register.js is connected");
 
+const registerForm = document.getElementById("register-form");
+const passwordInput = document.getElementById("password");
+const usernameInput = document.getElementById("username");
+const loginBtn = document.getElementById("login-btn");
+const message = document.getElementById("message");
 
-const registerForm = document.getElementById('register-form');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const usernameInput = document.getElementById('username');
-const loginBtn = document.getElementById('login-btn');
-const message = document.getElementById('message');
+registerForm.addEventListener("submit", handleRegister);
+loginBtn.addEventListener("click", goToLoginPage);
 
-const userData = {
-    email: '',
-    password: '',
-    username: ''
-};
+async function handleRegister(event) {
+  event.preventDefault();
 
-registerForm.addEventListener('submit', handleRegister);
-loginBtn.addEventListener('click', goToLoginPage);
+  const password = passwordInput.value.trim();
+  const username = usernameInput.value.trim();
 
-function handleRegister(event) {
-    event.preventDefault();
+  if (!username) {
+    showMessage("Please enter your username.");
+    usernameInput.focus();
+    return;
+  }
 
-    userData.email = emailInput.value.trim();
-    userData.password = passwordInput.value.trim();
-    userData.username = usernameInput.value.trim();
+  if (!password) {
+    showMessage("Please enter your password.");
+    passwordInput.focus();
+    return;
+  }
 
-    if (!userData.email) {
-        showMessage('Please enter your email.');
-        emailInput.focus();
-        return;
+  try {
+    const response = await fetch("http://localhost:3000/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      showMessage(data.error);
+      return;
     }
-    if (!userData.password) {
-        showMessage('Please enter your password.');
-        passwordInput.focus();
-        return;
-    }
-    if (!userData.username) {
-        showMessage('Please enter your username.');
-        usernameInput.focus();
-        return;
-    }
 
-    console.log('Register details:', userData);
-    showMessage('Register details captured successfully.');
+    console.log("Register response:", data);
+    showMessage("Account created successfully.");
     registerForm.reset();
+  } catch (error) {
+    console.log(error);
+    showMessage("Could not connect to server.");
+  }
 }
 
 function showMessage(text) {
-    message.textContent = text;
+  message.textContent = text;
+}
+
+function goToLoginPage() {
+  window.location.href = "../login/login.html";
 }
