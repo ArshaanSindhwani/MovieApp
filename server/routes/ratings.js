@@ -1,12 +1,12 @@
-const { Router } = require('express');
+const express = require("express");
 
-const ratingsController = require('../controllers/ratings.js');
+const ratingsController = require("../controllers/ratings");
+const auth = require("../middleware/auth");
 
-const ratingsRouter = Router();
+const router = express.Router();
 
-ratingsRouter.get("/:id", ratingsController.getRatingsForMovie);
-ratingsRouter.post("/:id", ratingsController.addRating);
-ratingsRouter.patch("/:id", ratingsController.updateRating);
+router.post("/ratings", auth, ratingsController.addRating);
+router.patch("/ratings/:film_id", auth, ratingsController.updateRating);
+router.get("/ratings/:film_id", ratingsController.getRatingsForMovie);
 
-
-module.exports = ratingsRouter;
+module.exports = router;

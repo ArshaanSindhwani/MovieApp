@@ -1,9 +1,10 @@
-const { Router } = require('express');
+const express = require("express");
 
-const externalController = require('../controllers/external.js');
+const externalController = require("../controllers/external");
+const auth = require("../middleware/auth");
 
-const externalRouter = Router();
+const router = express.Router();
 
-externalRouter.post("/refresh", externalController.refreshExternalRating);
+router.patch("/external/:id", auth, externalController.refreshExternalRating);
 
-module.exports = externalRouter;
+module.exports = router;
