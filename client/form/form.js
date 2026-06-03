@@ -1,5 +1,3 @@
-console.log('form.js connected');
-
 const addMovieForm = document.getElementById('add-movie-form');
 const movieNameInput = document.getElementById('movie_name');
 const directorInput = document.getElementById('director');
@@ -11,7 +9,8 @@ const posterImg = document.getElementById('poster-img');
 const posterPlaceholder = document.getElementById('poster-placeholder');
 const message = document.getElementById('message');
 
-// Live poster preview — updates as user types a URL
+const token = localStorage.getItem('token');
+
 posterUrlInput.addEventListener('input', () => {
     const url = posterUrlInput.value.trim();
     if (url) {
@@ -25,7 +24,6 @@ posterUrlInput.addEventListener('input', () => {
     }
 });
 
-// Hide placeholder if image fails to load
 posterImg.addEventListener('error', () => {
     posterImg.classList.remove('visible');
     posterPlaceholder.style.display = 'block';
@@ -37,15 +35,15 @@ function handleAddMovie(event) {
     event.preventDefault();
 
     const movieData = {
-        movie_name: movieNameInput.value.trim(),
+        film_name: movieNameInput.value.trim(),
         director: directorInput.value.trim(),
         producer: producerInput.value.trim(),
         notable_actors: notableActorsInput.value.trim(),
-        year_released: yearReleasedInput.value.trim(),
+        year_released: Number(yearReleasedInput.value.trim()),
         poster_img_url: posterUrlInput.value.trim()
     };
 
-    if (!movieData.movie_name) {
+    if (!movieData.film_name) {
         showMessage('Please enter a movie title.');
         movieNameInput.focus();
         return;
@@ -71,29 +69,27 @@ function handleAddMovie(event) {
         return;
     }
 
-    console.log('Movie data captured:', movieData);
-    showMessage('Movie added successfully!');
-    addMovieForm.reset();
-    posterImg.classList.remove('visible');
-    posterImg.src = '';
-    posterPlaceholder.style.display = 'block';
-
-    // TODO: connect to API when backend is ready
-    // const token = localStorage.getItem('token');
-    // fetch('/movies', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer ${token}`
-    //     },
-    //     body: JSON.stringify(movieData)
-    // })
-    // .then(res => res.json())
-    // .then(data => {
-    //     showMessage('Movie added successfully!');
-    //     addMovieForm.reset();
-    // })
-    // .catch(err => showMessage('Something went wrong.'));
+    fetch('http://localhost:3000/movies', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(movieData)
+    })
+    .then(res => {
+        if (!res.ok) {
+            return res.json().then(data => { showMessage(data.error || 'Something went wrong.'); });
+        }
+        return res.json().then(() => {
+            showMessage('Movie added successfully!');
+            addMovieForm.reset();
+            posterImg.classList.remove('visible');
+            posterImg.src = '';
+            posterPlaceholder.style.display = 'block';
+        });
+    })
+    .catch(err => showMessage('Something went wrong.'));
 }
 
 function showMessage(text) {
