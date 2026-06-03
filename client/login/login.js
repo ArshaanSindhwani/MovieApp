@@ -1,3 +1,10 @@
+// TODO:
+// Verify the API URL matches the target environment (local, staging, production).
+// Ensure `email` is used consistently throughout the application
+// (frontend forms, API requests, backend routes, database schema and queries).
+// If the backend/database uses `username` instead, update all layers to use a
+// single naming convention.
+
 document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -10,7 +17,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            username: form.get("username"),
+            email: form.get("email"),
             password: form.get("password")
         })
     }
@@ -20,7 +27,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
-        window.location.assign("board.html");
+        window.location.assign("../homepage/home.html"); 
       } else {
         alert(data.error);
       }
