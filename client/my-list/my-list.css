@@ -1,0 +1,112 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #e0e0e0;
+  overflow: hidden;
+}
+
+.phone {
+  width: 390px;
+  height: 844px;
+  background: #183c3a;
+  border-radius: 50px;
+  border: 8px solid #222;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 60px 24px 100px;
+  box-sizing: border-box;
+  text-align: center;
+  background: 
+    radial-gradient(circle at top, rgba(128, 255, 224, 0.2), transparent 30%),
+    linear-gradient(180deg, #2d7d76 0%, #183c3a 55%, #112726 100%);
+}
+
+.movie-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 4px;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  background: rgba(80, 160, 150, 0.25);
+  border-radius: 16px;
+  padding: 12px;
+  border: 1px solid rgba(127, 255, 212, 0.4);
+}
+
+.movie-card img {
+  width: 70px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  text-align: left;
+}
+
+.movie-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f3fffc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.movie-year,
+.movie-director,
+.movie-actors,
+.movie-rating {
+  font-size: 15px;
+  color: #a8d7cf;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.movie-rating {
+  color: #7fffd4;
+  font-weight: 600;
+}
+
+nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 20px 24px;
+  display: flex;
+  gap: 10px;
+  background: rgb(17, 39, 38);
+  /* border-top: 1px solid rgba(78, 157, 149, 0.2); */
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #7fffd4 0%, #53e6b7 100%);
+  color: #123330;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
