@@ -11,6 +11,7 @@ class Movie {
     external_rating,
     poster_img_url,
     avg_user_rating,
+    added_by,
   }) {
     this.film_id = film_id;
     this.film_name = film_name;
@@ -18,36 +19,23 @@ class Movie {
     this.director = director;
     this.notable_actors = notable_actors;
     this.year_released = year_released;
-    this.external_rating = external_rating;
+    this.external_rating = external_rating != null ? parseFloat(external_rating) : 0;
     this.poster_img_url = poster_img_url;
-    this.avg_user_rating = avg_user_rating || null;
+    this.avg_user_rating = avg_user_rating != null ? parseFloat(avg_user_rating) : null;
+    this.added_by = added_by || null;
   }
 
-  static async create(data) {
-    const {
-      film_name,
-      producer,
-      director,
-      notable_actors,
-      year_released,
-      poster_img_url,
-    } = data;
+  static async create(data, userId) {
+    const { film_name, producer, director, notable_actors, year_released, poster_img_url } = data;
 
     const response = await db.query(
-      `INSERT INTO films 
-      (film_name, producer, director, notable_actors, year_released, external_rating, poster_img_url)
-      VALUES ($1, $2, $3, $4, $5, 0, $6)
-      RETURNING *;`,
-      [
-        film_name,
-        producer,
-        director,
-        notable_actors,
-        year_released,
-        poster_img_url,
-      ],
+      `INSERT INTO films (film_name, producer, director, notable_actors, year_released, external_rating, poster_img_url, added_by)
+       VALUES ($1, $2, $3, $4, $5, 0, $6, $7)
+       RETURNING *;`,
+      [film_name, producer, director, notable_actors, year_released, poster_img_url, userId],
     );
 
+    if (!response.rows[0]) throw new Error('Film could not be created.');
     return new Movie(response.rows[0]);
   }
 
@@ -73,10 +61,7 @@ class Movie {
       [id],
     );
 
-    if (response.rows.length === 0) {
-      return null;
-    }
-
+    if (response.rows.length === 0) return null;
     return new Movie(response.rows[0]);
   }
 
@@ -86,10 +71,7 @@ class Movie {
       [id],
     );
 
-    if (response.rows.length === 0) {
-      return null;
-    }
-
+    if (response.rows.length === 0) return null;
     return new Movie(response.rows[0]);
   }
 
@@ -99,10 +81,7 @@ class Movie {
       [filmId, externalRating],
     );
 
-    if (response.rows.length === 0) {
-      return null;
-    }
-
+    if (response.rows.length === 0) return null;
     return new Movie(response.rows[0]);
   }
 }
