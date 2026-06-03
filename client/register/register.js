@@ -48,8 +48,3 @@ function handleRegister(event) {
 function showMessage(text) {
     message.textContent = text;
 }
-
-function goToLoginPage() {
-    console.log('Login button clicked');
-    window.location.href = "../login/login.html";
-}
