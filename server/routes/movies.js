@@ -1,13 +1,14 @@
-const { Router } = require('express');
+const express = require("express");
 
-const moviesController = require('../controllers/movies.js');
+const moviesController = require("../controllers/movies");
+const auth = require("../middleware/auth");
 
-const moviesRouter = Router();
+const router = express.Router();
 
-moviesRouter.get("/", moviesController.getMovies);
-moviesRouter.get("/:id", moviesController.getMovieById);
-moviesRouter.post("/", moviesController.addMovie);
-moviesRouter.delete("/:id", moviesController.deleteMovie);
+router.get("/", moviesController.getMovies);
+router.post("/", auth, moviesController.addMovie);
+router.get("/:id", moviesController.getMovieById);
+router.patch("/:id/refresh-rating", auth, moviesController.refreshRating);
+router.delete("/:id", auth, moviesController.deleteMovie);
 
-
-module.exports = moviesRouter;
+module.exports = router;
