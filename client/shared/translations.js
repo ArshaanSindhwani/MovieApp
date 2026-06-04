@@ -37,6 +37,7 @@ const translations = {
         "form-actors": "Notable Actors",
         "form-year": "Year Released",
         "form-btn": "Add Movie",
+        "form-rating": "Your Rating (1-10)",
 
         // my-list labels
         "list-year": "Year:",
@@ -83,11 +84,13 @@ const translations = {
         "form-actors": "主な俳優",
         "form-year": "公開年",
         "form-btn": "映画を追加",
+        "form-rating": "あなたの評価（1〜10）",
 
         "list-year": "年：",
         "list-director": "監督：",
         "list-actors": "俳優：",
         "list-ext-rating": "外部評価：",
+        "list-producer": "プロデューサー：",
         "list-avg-rating": "平均ユーザー評価："
     },
 
@@ -126,12 +129,14 @@ const translations = {
         "form-producer": "제작자",
         "form-actors": "주요 배우",
         "form-year": "개봉 연도",
+        "form-rating": "내 평점 (1-10)",
         "form-btn": "영화 추가",
 
         "list-year": "연도:",
         "list-director": "감독:",
         "list-actors": "배우:",
         "list-ext-rating": "외부 평점:",
+        "list-producer": "제작자:",
         "list-avg-rating": "평균 사용자 평점:"
     },
 
@@ -170,12 +175,14 @@ const translations = {
         "form-producer": "Productor",
         "form-actors": "Actores destacados",
         "form-year": "Año de estreno",
+        "form-rating": "Tu valoración (1-10)",
         "form-btn": "Añadir película",
 
         "list-year": "Año:",
         "list-director": "Director:",
         "list-actors": "Actores:",
         "list-ext-rating": "Calificación externa:",
+        "list-producer": "Tu valoración:",
         "list-avg-rating": "Calificación media de usuarios:"
     }
 
