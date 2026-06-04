@@ -31,12 +31,22 @@ body {
     linear-gradient(180deg, #2d7d76 0%, #183c3a 55%, #112726 100%);
 }
 
+.page-title {
+  margin: 0 0 20px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #f3fffc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
 .movie-list {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding-right: 4px;
+    margin-top: 8px;
 }
 
 .movie-card {
