@@ -20,7 +20,7 @@ def recommend():
     
     try:
         response = client.models.generate_content(
-            model="gemini-3.5-flash",
+            model="gemini-2.5-flash",
             contents=f'Watched "{film_name}". What should I watch next? Respond in less than 50 words'
         )
         return jsonify({"recommendation": response.text})

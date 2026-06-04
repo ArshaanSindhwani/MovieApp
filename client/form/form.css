@@ -198,3 +198,21 @@ body {
 .nav-btn:active {
     background: rgba(127, 255, 212, 0.15);
 }
+#ai-reccomendation {
+    width: 100%;
+    margin-top: 18px;
+    padding: 16px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(127, 255, 212, 0.35);
+    border-radius: 16px;
+    color: #D7FFF6;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    min-height: 20px;
+}
+
+#ai-reccomendation:empty {
+    display: none;
+}
