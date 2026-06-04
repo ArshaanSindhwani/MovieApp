@@ -45,7 +45,7 @@ const translations = {
         "list-producer": "Producer",
         "list-actors": "Actors:",
         "list-ext-rating": "External Rating:",
-        "list-avg-rating": "Average User Rating:"
+        "list-avg-rating": "Your Rating:"
     },
 
     jp: {
