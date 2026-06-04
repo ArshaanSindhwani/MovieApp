@@ -4,6 +4,7 @@ const directorInput = document.getElementById('director');
 const producerInput = document.getElementById('producer');
 const notableActorsInput = document.getElementById('notable_actors');
 const yearReleasedInput = document.getElementById('year_released');
+const userRatingInput = document.getElementById('user_rating');
 const message = document.getElementById('message');
 
 const token = localStorage.getItem('token');
@@ -47,6 +48,14 @@ async function handleAddMovie(event) {
         return;
     }
 
+    const userRating = userRatingInput.value ? parseInt(userRatingInput.value) : null;
+
+    if (userRating !== null && (userRating < 1 || userRating > 10)) {
+        showMessage('Rating must be between 1 and 10.');
+        userRatingInput.focus();
+        return;
+    }
+
     fetch('http://localhost:3000/movies', {
         method: 'POST',
         headers: {
@@ -59,10 +68,22 @@ async function handleAddMovie(event) {
         if (!res.ok) {
             return res.json().then(function(data) { showMessage(data.error || 'Something went wrong.'); });
         }
-        return res.json().then(function() {
-            showMessage('Movie added successfully!');
-            addMovieForm.reset();
+        return res.json().then(function(data) {
+            if (userRating !== null) {
+                return fetch('http://localhost:3000/movies/' + data.film_id + '/ratings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify({ root_user_rating: userRating })
+                });
+            }
         });
+    })
+    .then(function() {
+        showMessage('Movie added successfully!');
+        addMovieForm.reset();
     })
     .catch(function() {
         showMessage('Could not connect to server.');
