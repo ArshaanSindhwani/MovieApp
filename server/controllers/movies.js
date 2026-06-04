@@ -73,4 +73,13 @@ async function deleteMovie(req, res) {
   }
 }
 
-module.exports = { getMovies, addMovie, getMovieById, deleteMovie };
+async function getTopRated(req, res) {
+  try {
+    const movies = await Movie.getTopRated();
+    res.status(200).json(movies);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
+
+module.exports = { getMovies, addMovie, getMovieById, deleteMovie, getTopRated };
