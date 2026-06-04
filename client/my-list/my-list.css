@@ -31,12 +31,22 @@ body {
     linear-gradient(180deg, #2d7d76 0%, #183c3a 55%, #112726 100%);
 }
 
+.page-title {
+  margin: 0 0 20px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #f3fffc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
 .movie-list {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding-right: 4px;
+    margin-top: 8px;
 }
 
 .movie-card {
@@ -74,6 +84,7 @@ body {
 
 .movie-year,
 .movie-director,
+.movie-producer,
 .movie-actors,
 .movie-rating {
   font-size: 15px;
@@ -86,7 +97,7 @@ body {
   font-weight: 600;
 }
 
-nav {
+.bottom-nav {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -95,18 +106,18 @@ nav {
   display: flex;
   gap: 10px;
   background: rgb(17, 39, 38);
-  /* border-top: 1px solid rgba(78, 157, 149, 0.2); */
+  border-top: 1px solid rgba(78, 157, 149, 0.2);
 }
 
 .nav-btn {
   flex: 1;
-  padding: 12px;
+  padding: 8px, 12px;
   border: none;
-  border-radius: 20px;
-  background: linear-gradient(90deg, #7fffd4 0%, #53e6b7 100%);
-  color: #123330;
+  border-radius: 12px;
+  background: none;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+  color: #d7fff6;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
