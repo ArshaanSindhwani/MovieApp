@@ -19,12 +19,17 @@ async function refreshExternalRating(req, res) {
       return res.status(404).json({ error: "Film not found on TMDB" });
     }
 
-    const tmdbRating = tmdbData.results[0].vote_average;
+    const tmdbMovie = tmdbData.results[0];
+    const tmdbRating = tmdbMovie.vote_average;
     if (tmdbRating == null) {
       return res.status(502).json({ error: "No rating available on TMDB" });
     }
 
-    const updated = await Movie.updateExternalRating(req.params.id, tmdbRating);
+    const posterUrl = tmdbMovie.poster_path
+      ? `https://image.tmdb.org/t/p/w500${tmdbMovie.poster_path}`
+      : movie.poster_img_url;
+
+    const updated = await Movie.updateExternalRating(req.params.id, tmdbRating, posterUrl);
     res.status(200).json(updated);
   } catch (err) {
     res.status(500).json({ error: "Internal server error" });

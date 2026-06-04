@@ -1,35 +1,12 @@
-console.log('form.js connected');
-
 const addMovieForm = document.getElementById('add-movie-form');
 const movieNameInput = document.getElementById('movie_name');
 const directorInput = document.getElementById('director');
 const producerInput = document.getElementById('producer');
 const notableActorsInput = document.getElementById('notable_actors');
 const yearReleasedInput = document.getElementById('year_released');
-const posterUrlInput = document.getElementById('poster_img_url');
-const posterImg = document.getElementById('poster-img');
-const posterPlaceholder = document.getElementById('poster-placeholder');
 const message = document.getElementById('message');
 
-
-posterUrlInput.addEventListener('input', () => {
-    const url = posterUrlInput.value.trim();
-    if (url) {
-        posterImg.src = url;
-        posterImg.classList.add('visible');
-        posterPlaceholder.style.display = 'none';
-    } else {
-        posterImg.classList.remove('visible');
-        posterImg.src = '';
-        posterPlaceholder.style.display = 'block';
-    }
-});
-
-
-posterImg.addEventListener('error', () => {
-    posterImg.classList.remove('visible');
-    posterPlaceholder.style.display = 'block';
-});
+const token = localStorage.getItem('token');
 
 addMovieForm.addEventListener('submit', handleAddMovie);
 
@@ -41,8 +18,7 @@ async function handleAddMovie(event) {
         director: directorInput.value.trim(),
         producer: producerInput.value.trim(),
         notable_actors: notableActorsInput.value.trim(),
-        year_released: parseInt(yearReleasedInput.value.trim()),
-        poster_img_url: posterUrlInput.value.trim()
+        year_released: Number(yearReleasedInput.value.trim())
     };
 
     if (!movieData.film_name) {
@@ -71,53 +47,38 @@ async function handleAddMovie(event) {
         return;
     }
 
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-        showMessage('You must be logged in to add a movie.');
-        return;
-    }
-
-    try {
-        const response = await fetch('http://localhost:3000/movies', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(movieData)
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            showMessage(data.error || 'Something went wrong.');
-            return;
+    fetch('http://localhost:3000/movies', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(movieData)
+    })
+    .then(function(res) {
+        if (!res.ok) {
+            return res.json().then(function(data) { showMessage(data.error || 'Something went wrong.'); });
         }
-
-        showMessage('Movie added successfully!');
-        addMovieForm.reset();
-        posterImg.classList.remove('visible');
-        posterImg.src = '';
-        posterPlaceholder.style.display = 'block';
-
-    } catch (err) {
-        showMessage('Could not connect to the server.');
-        console.error(err);
-    }
+        return res.json().then(function() {
+            showMessage('Movie added successfully!');
+            addMovieForm.reset();
+        });
+    })
+    .catch(function() {
+        showMessage('Could not connect to server.');
+    });
 }
 
 function showMessage(text) {
     message.textContent = text;
 }
 
-
-document.getElementById('home-btn').addEventListener('click', () => {
+document.getElementById('home-btn').addEventListener('click', function() {
     window.location.href = '../homepage/home.html';
 });
-document.getElementById('my-list-btn').addEventListener('click', () => {
+document.getElementById('my-list-btn').addEventListener('click', function() {
     window.location.href = '../my-list/my-list.html';
 });
-document.getElementById('form-btn').addEventListener('click', () => {
+document.getElementById('form-btn').addEventListener('click', function() {
     window.location.href = '../form/form.html';
 });
