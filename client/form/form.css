@@ -24,11 +24,16 @@ body {
 .screen {
     flex: 1;
     overflow-y: auto;
-    padding: 60px 32px 16px;
+    scrollbar-width: none;
+    padding: 45px 32px 16px;
     box-sizing: border-box;
     background:
         radial-gradient(circle at top, rgba(128, 255, 224, 0.15), transparent 30%),
         linear-gradient(180deg, #2d7d76 0%, #183c3a 55%, #112726 100%);
+}
+
+.screen::-webkit-scrollbar {
+    display: none;
 }
 
 .form-page {
@@ -193,6 +198,8 @@ body {
     border-radius: 12px;
     color: #d7fff6;
     transition: background 0.15s;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
 }
 
 .nav-btn:active {

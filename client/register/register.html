@@ -1,54 +1,64 @@
 <!doctype html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie App Register</title>
     <link rel="stylesheet" href="register.css" />
+    <script defer src="../shared/translations.js"></script>
+    <script defer src="../shared/translator.js"></script>
     <script defer src="register.js"></script>
   </head>
+
   <body>
     <div class="phone">
       <div class="screen">
+
         <main class="register-page">
-          <p class="page-title">MovieApp</p>
 
           <section class="register-header">
-            <h1>Lights, Camera, Account!</h1>
-            <p class="quote-text">Your movie journey starts here!</p>
+            <h1 data-text="register-title">Lights, Camera, Account!</h1>
+            <p class="quote-text" data-text="register-quote">Your movie journey starts here!</p>
           </section>
 
           <form id="register-form">
+
             <div class="input-group">
-              <label for="username">Username</label>
+              <label for="username" data-text="register-username">Username</label>
               <input
                 type="text"
                 id="username"
                 name="username"
                 placeholder="Choose a username"
+                data-text="register-username-ph"
               />
             </div>
 
             <div class="input-group">
-              <label for="password">Password</label>
+              <label for="password" data-text="register-password">Password</label>
               <input
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Enter your password"
+                data-text="register-password-ph"
               />
             </div>
 
-            <button type="submit" id="register-btn">Register</button>
+            <button type="submit" id="register-btn" data-text="register-btn">Register</button>
+
           </form>
 
           <p id="message"></p>
 
           <div class="login-link-container">
-            <p>Already have an account?</p>
-            <button id="login-btn" type="button">Login</button>
+            <p data-text="register-have-account">Already have an account?</p>
+            <button id="login-btn" type="button" data-text="register-login-btn">Login</button>
           </div>
+
         </main>
+
       </div>
     </div>
   </body>

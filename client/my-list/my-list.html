@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Movie List</title>
     <link rel="stylesheet" href="my-list.css">
+    <script defer src="../shared/translations.js"></script>
+    <script defer src="../shared/translator.js"></script>
     <script defer src="my-list.js"></script>
 </head>
 
@@ -25,6 +27,7 @@
                         <h2 class="movie-title">Insert Quirky Movie</h2>
                         <p class="movie-year">Year: 2026</p>
                         <p class="movie-director">Director: Matches Malone</p>
+                        <p class="movie-producer">Producer: Your Producer Name</p>
                         <p class="movie-actors">Actors: Me, Myself, I</p>
                         <p class="movie-rating">Rating: 8.5</p>
                     </div>
@@ -33,10 +36,10 @@
 
             </div>
 
-            <nav>
-                <button class="nav-btn" id="home-btn">Home</button>
-                <button class="nav-btn" id="mylist-btn">My List</button>
-                <button class="nav-btn" id="form-btn">Form</button>
+            <nav class="bottom-nav">
+                <button class="nav-btn" id="home-btn" data-text="nav-home">Home</button>
+                <button class="nav-btn" id="mylist-btn" data-text="nav-mylist">My List</button>
+                <button class="nav-btn" id="form-btn" data-text="nav-form">Form</button>
             </nav>
 
         </div>
