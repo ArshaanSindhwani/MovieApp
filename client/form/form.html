@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add a Movie</title>
     <link rel="stylesheet" href="form.css" />
+    <script defer src="../shared/translations.js"></script>
+    <script defer src="../shared/translator.js"></script>
     <script defer src="form.js"></script>
 </head>
 <body>
@@ -15,14 +17,14 @@
                 <p class="page-title">MovieApp</p>
 
                 <section class="form-header">
-                    <h1>Add a Movie</h1>
-                    <p class="quote-text">"Log it before you forget it"</p>
+                    <h1 data-text="form-title">Add a Movie</h1>
+                    <p class="quote-text" data-text="form-quote">"Log it before you forget it"</p>
                 </section>
 
                 <form id="add-movie-form">
 
                     <div class="input-group">
-                        <label for="movie_name">Movie Title</label>
+                        <label for="movie_name" data-text="form-movie-title">Movie Title</label>
                         <input
                             type="text"
                             id="movie_name"
@@ -31,7 +33,7 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="director">Director</label>
+                        <label for="director" data-text="form-director">Director</label>
                         <input
                             type="text"
                             id="director"
@@ -40,7 +42,7 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="producer">Producer</label>
+                        <label for="producer" data-text="form-producer">Producer</label>
                         <input
                             type="text"
                             id="producer"
@@ -49,7 +51,7 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="notable_actors">Notable Actors</label>
+                        <label for="notable_actors" data-text="form-actors">Notable Actors</label>
                         <input
                             type="text"
                             id="notable_actors"
@@ -58,7 +60,7 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="year_released">Year Released</label>
+                        <label for="year_released" data-text="form-year">Year Released</label>
                         <input
                             type="number"
                             id="year_released"
@@ -68,7 +70,7 @@
                         />
                     </div>
 
-                    <button type="submit" id="add-movie-btn">Add Movie</button>
+                    <button type="submit" id="add-movie-btn" data-text="form-btn">Add Movie</button>
 
                 </form>
 
@@ -78,9 +80,9 @@
         </div>
 
         <nav class="bottom-nav">
-            <button class="nav-btn" id="home-btn">Home</button>
-            <button class="nav-btn" id="my-list-btn">My List</button>
-            <button class="nav-btn" id="form-btn">Form</button>
+            <button class="nav-btn" id="home-btn" data-text="nav-home">Home</button>
+            <button class="nav-btn" id="my-list-btn" data-text="nav-mylist">My List</button>
+            <button class="nav-btn" id="form-btn" data-text="nav-form">Form</button>
         </nav>
 
     </div>
