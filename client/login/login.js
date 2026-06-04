@@ -15,7 +15,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
         })
     }
 
-    const response = await fetch("http://localhost:3000/users/login", options); // Link to be edited to match backend
+    const response = await fetch("http://localhost:3000/auth/login", options);
     const data = await response.json();
 
     if (response.status == 200) {

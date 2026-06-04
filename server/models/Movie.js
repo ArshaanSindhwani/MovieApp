@@ -75,10 +75,10 @@ class Movie {
     return new Movie(response.rows[0]);
   }
 
-  static async updateExternalRating(filmId, externalRating) {
+  static async updateExternalRating(filmId, externalRating, posterUrl) {
     const response = await db.query(
-      "UPDATE films SET external_rating = $2 WHERE film_id = $1 RETURNING *;",
-      [filmId, externalRating],
+      "UPDATE films SET external_rating = $2, poster_img_url = $3 WHERE film_id = $1 RETURNING *;",
+      [filmId, externalRating, posterUrl],
     );
 
     if (response.rows.length === 0) return null;
