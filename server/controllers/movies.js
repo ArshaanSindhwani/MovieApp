@@ -11,7 +11,7 @@ async function getMovies(req, res) {
 
 async function addMovie(req, res) {
   try {
-    const { film_name, producer, director, notable_actors, year_released, poster_img_url } = req.body;
+    const { film_name, producer, director, notable_actors, year_released } = req.body;
 
     if (!film_name || !producer || !director || !notable_actors || !year_released) {
       return res.status(400).json({ error: "Missing required movie fields" });
@@ -19,8 +19,27 @@ async function addMovie(req, res) {
 
     const movie = await Movie.create({
       film_name, producer, director, notable_actors, year_released,
-      poster_img_url: poster_img_url || ""
+      poster_img_url: ""
     }, req.user.user_id);
+
+    try {
+      const tmdbRes = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(film_name)}&api_key=${process.env.TMDB_API_KEY}`
+      );
+      const tmdbData = await tmdbRes.json();
+
+      if (tmdbData.results && tmdbData.results.length > 0) {
+        const tmdbMovie = tmdbData.results[0];
+        const posterUrl = tmdbMovie.poster_path
+          ? `https://image.tmdb.org/t/p/w500${tmdbMovie.poster_path}`
+          : "";
+        const externalRating = tmdbMovie.vote_average || 0;
+        const updated = await Movie.updateExternalRating(movie.film_id, externalRating, posterUrl);
+        return res.status(201).json(updated);
+      }
+    } catch {
+      // TMDB failed — return the movie without poster/rating
+    }
 
     res.status(201).json(movie);
   } catch (err) {
