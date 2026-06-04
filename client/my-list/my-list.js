@@ -62,7 +62,7 @@ function renderMovies(movies) {
             >
 
             <div class="movie-info"><h2 class="movie-title">${movie.film_name}</h2>
-            <p class="movie-year">Year: ${formatYear(movie.year_released)}</p>
+            <p class="movie-year"><span data-text="list-year">Year:</span> ${formatYear(movie.year_released)}</p>
             <p class="movie-director">Director: ${movie.director}</p>
             <p class="movie-producer">Producer: ${movie.producer}</p>
             <p class="movie-actors">Actors: ${movie.notable_actors}</p>

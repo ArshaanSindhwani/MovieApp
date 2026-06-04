@@ -49,6 +49,7 @@ async function handleRegister(event) {
     console.log("Register response:", data);
     showMessage("Account created successfully.");
     registerForm.reset();
+    // applyTranslations()
   } catch (error) {
     console.log(error);
     showMessage("Could not connect to server.");

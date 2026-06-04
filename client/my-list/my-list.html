@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Movie List</title>
     <link rel="stylesheet" href="my-list.css">
+    <script defer src="../shared/translations.js"></script>
+    <script defer src="../shared/translator.js"></script>
     <script defer src="my-list.js"></script>
 </head>
 
@@ -34,10 +36,10 @@
 
             </div>
 
-            <nav class="bottom-nav">
-                <button class="nav-btn" id="home-btn">Home</button>
-                <button class="nav-btn" id="mylist-btn">My List</button>
-                <button class="nav-btn" id="form-btn">Form</button>
+            <nav>
+                <button class="nav-btn" id="home-btn" data-text="nav-home">Home</button>
+                <button class="nav-btn" id="mylist-btn" data-text="nav-mylist">My List</button>
+                <button class="nav-btn" id="form-btn" data-text="nav-form">Form</button>
             </nav>
 
         </div>
