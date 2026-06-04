@@ -5,6 +5,7 @@ const producerInput = document.getElementById('producer');
 const notableActorsInput = document.getElementById('notable_actors');
 const yearReleasedInput = document.getElementById('year_released');
 const message = document.getElementById('message');
+const recommendTextbox = document.getElementById("ai-reccomendation")
 
 const token = localStorage.getItem('token');
 
@@ -76,33 +77,31 @@ function showMessage(text) {
 }
 
 async function generateRecommendation(filmName) {
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,        
-        },
-        body: {
-            "film_name": filmName
-        }
+    recommendTextbox.textContent = "AI recommendation loading..."
+    const req_body = {
+        "film_name": filmName
     }
-    console.log(options);
-    
     try {
-        const recommendation = await fetch('http://127.0.0.1:5001/recommend', options)
-        console.log(recommendation);
+        const response = await fetch('http://127.0.0.1:5001/recommend', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,        
+            },
+            body: JSON.stringify(req_body)
+        })
+        const data = await response.json()
+        addRecommendationText(data.recommendation);
 
     } catch (err) {
         showMessage('Something went wrong' + err)
     }
 }
 
-function addRecommendationText() {
-    recommendTextbox = document.createElement("p")
-    // add html elements to display ai message
-    // populate with data from response
+function addRecommendationText(recc) {
+    console.log(recommendTextbox);
+    recommendTextbox.textContent = recc
 }
-
 
 document.getElementById('home-btn').addEventListener('click', function() {
     window.location.href = '../homepage/home.html';
