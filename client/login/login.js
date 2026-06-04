@@ -1,3 +1,12 @@
+const langSelect = document.getElementById("lang-select")
+langSelect.value = localStorage.getItem("lang") || "en"
+
+langSelect.addEventListener("change", () => {
+    localStorage.setItem("lang", langSelect.value);
+    applyTranslations();
+});
+
+
 document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
