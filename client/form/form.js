@@ -86,6 +86,7 @@ async function handleAddMovie(event) {
     .then(function(res) {
         showMessage('Movie added successfully!');
         addMovieForm.reset();
+        generateRecommendation(movieData.film_name)
     })
     .catch(function() {
         showMessage('Could not connect to server.');
