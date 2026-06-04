@@ -63,16 +63,17 @@ function renderMovies(movies) {
 
             <div class="movie-info"><h2 class="movie-title">${movie.film_name}</h2>
             <p class="movie-year"><span data-text="list-year">Year:</span> ${formatYear(movie.year_released)}</p>
-            <p class="movie-director">Director: ${movie.director}</p>
-            <p class="movie-producer">Producer: ${movie.producer}</p>
-            <p class="movie-actors">Actors: ${movie.notable_actors}</p>
-            <p class="movie-rating">External Rating: ${movie.external_rating || "N/A"}/10</p>
-            <p class="movie-rating">User Rating: ${movie.avg_user_rating || "No ratings yet"}</p>
+            <p class="movie-director"><span data-text="list-director">Director:</span> ${movie.director}</p>
+            <p class="movie-producer"><span data-text="list-producer">Producer:</span> ${movie.producer}</p>
+            <p class="movie-actors"><span data-text="list-actors">Actors:</span> ${movie.notable_actors}</p>
+            <p class="movie-rating"><span data-text="list-ext-rating">External Rating:</span> ${movie.external_rating || "N/A"}/10</p>
+            <p class="movie-rating"><span data-text="list-avg-rating">User Rating:</span> ${movie.avg_user_rating || "No ratings yet"}</p>
             </div>
         `;
 
     movieList.appendChild(movieCard);
   });
+  applyTranslations();
 }
 
 function formatYear(yearReleased) {

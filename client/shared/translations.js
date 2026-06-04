@@ -41,6 +41,7 @@ const translations = {
         // my-list labels
         "list-year": "Year:",
         "list-director": "Director:",
+        "list-producer": "Producer",
         "list-actors": "Actors:",
         "list-ext-rating": "External Rating:",
         "list-avg-rating": "Average User Rating:"
