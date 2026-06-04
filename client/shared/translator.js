@@ -1,6 +1,8 @@
 function applyTranslations() {
+
   const lang = localStorage.getItem("lang") || "en";
   const dict = translations[lang];
+
   if (!dict) return;
 
   document.querySelectorAll("[data-text]").forEach(el => {
@@ -12,6 +14,7 @@ function applyTranslations() {
     const key = el.getAttribute("data-text-ph");
     if (dict[key]) el.placeholder = dict[key];
   });
+  
 }
 
 document.addEventListener("DOMContentLoaded", applyTranslations);
