@@ -99,7 +99,6 @@ async function generateRecommendation(filmName) {
 }
 
 function addRecommendationText(recc) {
-    console.log(recommendTextbox);
     recommendTextbox.textContent = recc
 }
 
