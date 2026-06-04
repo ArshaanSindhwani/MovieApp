@@ -84,14 +84,8 @@ async function handleAddMovie(event) {
         });
     })
     .then(function(res) {
-        if (!res.ok) {
-            return res.json().then(function(data) { showMessage(data.error || 'Something went wrong.'); });
-        }
-        return res.json().then(function() {
-            showMessage('Movie added successfully!');
-            addMovieForm.reset();
-            generateRecommendation(movieData.film_name)
-        });
+        showMessage('Movie added successfully!');
+        addMovieForm.reset();
     })
     .catch(function() {
         showMessage('Could not connect to server.');
