@@ -9,6 +9,18 @@ async function getMovies(req, res) {
   }
 }
 
+async function getTopRated(req, res) {
+    try {
+        const movies = await Movie.getTopRated();
+
+        res.status(200).json(movies);
+    } catch (err) {
+        res.status(500).json({
+            error: err.message
+        });
+    }
+}
+
 async function addMovie(req, res) {
   try {
     const { film_name, producer, director, notable_actors, year_released } = req.body;
@@ -57,6 +69,36 @@ async function getMovieById(req, res) {
   }
 }
 
+async function refreshRating(req, res) {
+    try {
+        const { id } = req.params;
+        const { external_rating } = req.body;
+
+        if (external_rating === undefined) {
+            return res.status(400).json({
+                error: "External rating is required"
+            });
+        }
+
+        const movie = await Movie.updateExternalRating(id, external_rating);
+
+        if (!movie) {
+            return res.status(404).json({
+                error: "Movie not found"
+            });
+        }
+
+        res.status(200).json({
+            message: "Rating refreshed successfully",
+            movie
+        });
+    } catch (err) {
+        res.status(500).json({
+            error: err.message
+        });
+    }
+}
+
 async function deleteMovie(req, res) {
   try {
     const movie = await Movie.findById(req.params.id);
@@ -73,4 +115,4 @@ async function deleteMovie(req, res) {
   }
 }
 
-module.exports = { getMovies, addMovie, getMovieById, deleteMovie };
+module.exports = { getMovies, getTopRated, addMovie, getMovieById, refreshRating, deleteMovie };

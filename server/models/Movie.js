@@ -39,6 +39,19 @@ class Movie {
     return new Movie(response.rows[0]);
   }
 
+  static async getTopRated() {
+    const response = await db.query(
+      `SELECT films.*, ROUND(AVG(films_watched.root_user_rating), 1) AS avg_user_rating
+        FROM films
+        LEFT JOIN films_watched ON films.film_id = films_watched.film_id
+        GROUP BY films.film_id
+        ORDER BY films.external_rating DESC
+        LIMIT 10;`
+    );
+
+    return response.rows.map(movie => new Movie(movie));
+  }
+
   static async getAll() {
     const response = await db.query(
       `SELECT films.*, ROUND(AVG(films_watched.root_user_rating), 1) AS avg_user_rating
