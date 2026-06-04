@@ -4,7 +4,6 @@ const directorInput = document.getElementById('director');
 const producerInput = document.getElementById('producer');
 const notableActorsInput = document.getElementById('notable_actors');
 const yearReleasedInput = document.getElementById('year_released');
-const userRatingInput = document.getElementById('user_rating');
 const message = document.getElementById('message');
 
 const token = localStorage.getItem('token');
@@ -48,14 +47,6 @@ async function handleAddMovie(event) {
         return;
     }
 
-    const userRating = userRatingInput.value ? parseInt(userRatingInput.value) : null;
-
-    if (userRating !== null && (userRating < 1 || userRating > 10)) {
-        showMessage('Rating must be between 1 and 10.');
-        userRatingInput.focus();
-        return;
-    }
-
     fetch('http://localhost:3000/movies', {
         method: 'POST',
         headers: {
@@ -68,31 +59,50 @@ async function handleAddMovie(event) {
         if (!res.ok) {
             return res.json().then(function(data) { showMessage(data.error || 'Something went wrong.'); });
         }
-        return res.json().then(function(data) {
-            if (userRating !== null) {
-                return fetch('http://localhost:3000/movies/' + data.film_id + '/ratings', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + token
-                    },
-                    body: JSON.stringify({ root_user_rating: userRating })
-                });
-            }
+        return res.json().then(function() {
+            showMessage('Movie added successfully!');
+            addMovieForm.reset();
+            generateRecommendation(movieData.film_name)
         });
-    })
-    .then(function() {
-        showMessage('Movie added successfully!');
-        addMovieForm.reset();
     })
     .catch(function() {
         showMessage('Could not connect to server.');
     });
+
 }
 
 function showMessage(text) {
     message.textContent = text;
 }
+
+async function generateRecommendation(filmName) {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,        
+        },
+        body: {
+            "film_name": filmName
+        }
+    }
+    console.log(options);
+    
+    try {
+        const recommendation = await fetch('http://127.0.0.1:5001/recommend', options)
+        console.log(recommendation);
+
+    } catch (err) {
+        showMessage('Something went wrong' + err)
+    }
+}
+
+function addRecommendationText() {
+    recommendTextbox = document.createElement("p")
+    // add html elements to display ai message
+    // populate with data from response
+}
+
 
 document.getElementById('home-btn').addEventListener('click', function() {
     window.location.href = '../homepage/home.html';
@@ -103,3 +113,4 @@ document.getElementById('my-list-btn').addEventListener('click', function() {
 document.getElementById('form-btn').addEventListener('click', function() {
     window.location.href = '../form/form.html';
 });
+
