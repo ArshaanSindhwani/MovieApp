@@ -1,15 +1,23 @@
 # MovieApp
 
-> Developed as part of a team project at La Fosse Academy, with contributions focused on backend architecture, authentication, API integration, database design, and Docker containerisation.
+> Developed as part of a team project at La Fosse Academy, with contributions focused on backend architecture, authentication, API integration, database design, and containerised application deployment.
 
-MovieApp is a full-stack movie tracking application that enables users to manage watched films, ratings, and reviews while integrating external movie information through third-party APIs.
+MovieApp is a full-stack movie tracking platform that enables users to build personal movie collections, record ratings, view external movie information, and receive AI-powered movie recommendations.
+
+The application combines a JavaScript frontend, Express backend, PostgreSQL database, TMDB integration, and a Python-based recommendation service to create a feature-rich movie discovery experience.
+
+---
 
 ## Technologies
+
+### Frontend
+- HTML
+- CSS
+- JavaScript
 
 ### Backend
 - Node.js
 - Express
-- JavaScript
 
 ### Database
 - PostgreSQL
@@ -17,22 +25,47 @@ MovieApp is a full-stack movie tracking application that enables users to manage
 ### Authentication
 - JWT Authentication
 
-### Integrations
+### External Integrations
 - TMDB API
 
-### Development
+### AI & Recommendation Engine
+- Python
+- Flask
+
+### Development & Deployment
 - Docker
+- Docker Compose
 - Git
 - GitHub
 
+---
+
 ## Key Features
 
-- User authentication and authorisation
-- Movie tracking and rating functionality
-- External movie data integration
-- PostgreSQL relational database design
+- User registration and login
+- JWT-based authentication and authorisation
+- Personal movie collection management
+- Movie rating and review functionality
+- Automatic movie poster retrieval
+- TMDB API integration
+- AI-powered movie recommendations
+- Multi-language support
+- Top-rated movie homepage
 - RESTful API architecture
 - Docker containerisation
+
+---
+
+## User Journey
+
+1. Register an account and log in.
+2. Browse movie information and discover top-rated films.
+3. Add movies to your personal collection.
+4. Record ratings and reviews.
+5. View your saved movie library.
+6. Receive AI-generated movie recommendations based on your interests.
+
+---
 
 ## Architecture
 
@@ -46,38 +79,7 @@ Express
 PostgreSQL
     ↓
 TMDB API
-```
 
-## My Contribution
-
-I contributed to the development of MovieApp, focusing on backend development, authentication, database design, external API integration, and Docker-based deployment concepts.
-
-## Installation
-
-```bash
-git clone <repository-url>
-cd MovieApp
-npm install
-npm run dev
-```
-
-Configure any required environment variables before running the application.
-
-## Screenshots
-
-Screenshots coming soon.
-
-## What I Learned
-
-- Authentication using JWT
-- API integration
-- Relational database modelling
-- Docker fundamentals
-- Backend architecture patterns
-
-## Future Improvements
-
-- Social sharing functionality
-- Recommendation engine
-- Watchlists
-- User profiles
+AI Recommendation Service
+    ↓
+Python Flask
