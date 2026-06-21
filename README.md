@@ -7,25 +7,20 @@ MovieApp is a full-stack movie tracking application that enables users to manage
 ## Technologies
 
 ### Backend
-
 - Node.js
 - Express
 - JavaScript
 
 ### Database
-
 - PostgreSQL
 
 ### Authentication
-
 - JWT Authentication
 
 ### Integrations
-
 - TMDB API
 
 ### Development
-
 - Docker
 - Git
 - GitHub
@@ -56,6 +51,17 @@ TMDB API
 ## My Contribution
 
 I contributed to the development of MovieApp, focusing on backend development, authentication, database design, external API integration, and Docker-based deployment concepts.
+
+## Installation
+
+```bash
+git clone <repository-url>
+cd MovieApp
+npm install
+npm run dev
+```
+
+Configure any required environment variables before running the application.
 
 ## Screenshots
 
