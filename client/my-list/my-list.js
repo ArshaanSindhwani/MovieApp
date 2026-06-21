@@ -1,0 +1,97 @@
+console.log("my-list.js connected");
+
+const movieList = document.getElementById("movie-list");
+const homeBtn = document.getElementById("home-btn");
+const myListBtn = document.getElementById("mylist-btn");
+const formBtn = document.getElementById("form-btn");
+
+document.addEventListener("DOMContentLoaded", getMovies);
+
+homeBtn.addEventListener("click", goToHomePage);
+myListBtn.addEventListener("click", goToMyListPage);
+formBtn.addEventListener("click", goToFormPage);
+
+async function getMovies() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    movieList.innerHTML = `<p class="movie-rating">Please log in first.</p>`;
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/movies", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const movies = await response.json();
+
+    if (!response.ok) {
+      movieList.innerHTML = `<p class="movie-rating">${movies.error}</p>`;
+      return;
+    }
+
+    renderMovies(movies);
+  } catch (error) {
+    console.log(error);
+
+    movieList.innerHTML = `<p class="movie-rating">Could not connect to server.</p>`;
+  }
+}
+
+function renderMovies(movies) {
+  movieList.innerHTML = "";
+
+  if (movies.length === 0) {
+    movieList.innerHTML = `<p class="movie-rating">No movies found.</p>`;
+    return;
+  }
+
+  movies.forEach((movie) => {
+    const movieCard = document.createElement("div");
+
+    movieCard.className = "movie-card";
+
+    movieCard.innerHTML = `
+            <img
+                src="${movie.poster_img_url || "https://placehold.co/80x120"}"
+                alt="${movie.film_name} poster"
+            >
+
+            <div class="movie-info"><h2 class="movie-title">${movie.film_name}</h2>
+            <p class="movie-year"><span data-text="list-year">Year:</span> ${formatYear(movie.year_released)}</p>
+            <p class="movie-director"><span data-text="list-director">Director:</span> ${movie.director}</p>
+            <p class="movie-producer"><span data-text="list-producer">Producer:</span> ${movie.producer}</p>
+            <p class="movie-actors"><span data-text="list-actors">Actors:</span> ${movie.notable_actors}</p>
+            <p class="movie-rating"><span data-text="list-ext-rating">External Rating:</span> ${movie.external_rating || "N/A"}/10</p>
+            <p class="movie-rating"><span data-text="list-avg-rating">User Rating:</span> ${movie.avg_user_rating || "No ratings yet"}</p>
+            </div>
+        `;
+
+    movieList.appendChild(movieCard);
+  });
+  applyTranslations();
+}
+
+function formatYear(yearReleased) {
+  if (!yearReleased) {
+    return "Unknown";
+  }
+
+  return yearReleased.toString().slice(0, 4);
+}
+
+function goToHomePage() {
+  window.location.href = "../homepage/home.html";
+}
+
+function goToMyListPage() {
+  window.location.href = "../my-list/my-list.html";
+}
+
+function goToFormPage() {
+  window.location.href = "../form/form.html";
+}

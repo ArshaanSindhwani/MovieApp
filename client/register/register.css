@@ -1,0 +1,192 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #ffffff;
+}
+
+.phone {
+    width: 390px;
+    height: 844px;
+    background: #183c3a;
+    border-radius: 50px;
+    border: 8px solid #1e2a2a;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 60px 32px 40px;
+    box-sizing: border-box;
+    background:
+        radial-gradient(circle at top, rgba(128, 255, 224, 0.15), transparent 30%),
+        linear-gradient(180deg, #2d7d76 0%, #183c3a 55%, #112726 100%);
+}
+
+.register-page,
+.signup-page {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 45px;
+}
+
+.page-title {
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #d7fff6;
+}
+
+.register-header,
+.signup-header {
+    width: 100%;
+    text-align: center;
+    margin-top: 28px;
+    margin-bottom: 88px;
+}
+
+.register-header h1,
+.signup-header h1 {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #f3fffc;
+    text-align: center;
+}
+
+.quote-text {
+    margin: 12px 0 0;
+    font-size: 17px;
+    line-height: 1.4;
+    color: #c6f3ea;
+    text-align: center;
+}
+
+#register-form,
+#signup-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 8px;
+    align-self: stretch;
+}
+
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.input-group label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f3fffc;
+}
+
+.input-group input {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 18px 16px;
+    font-size: 16px;
+    border: none;
+    background: #ffffff;
+    color: #183c3a;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-group input::placeholder {
+    color: #8a8a8a;
+    opacity: 1;
+}
+
+.input-group input:focus {
+    box-shadow: 0 0 0 2px rgba(143, 255, 227, 0.25);
+}
+
+#register-btn,
+#signup-btn {
+    margin-top: 10px;
+    padding: 12px 28px;
+    border: none;
+    background: rgba(127, 255, 212, 0.95);
+    color: #123330;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 14px;
+    cursor: pointer;
+    align-self: center;
+    min-width: 165px;
+}
+
+#message {
+    margin: 0;
+    min-height: 24px;
+    text-align: center;
+    font-size: 15px;
+    color: #d7fff6;
+}
+
+.bottom-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 42px;
+}
+
+.login-link-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-link-container p {
+    margin: 10;
+    color: #f3fffc;
+    font-size: 16px;
+    text-align: center;
+}
+
+#login-btn {
+    padding: 12px 28px;
+    border: none;
+    background: rgba(127, 255, 212, 0.95);
+    color: #123330;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+

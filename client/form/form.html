@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Movie</title>
+    <link rel="stylesheet" href="form.css" />
+    <script defer src="../shared/translations.js"></script>
+    <script defer src="../shared/translator.js"></script>
+    <script defer src="form.js"></script>
+</head>
+<body>
+    <div class="phone">
+        <div class="screen">
+            <main class="form-page">
+
+                <section class="form-header">
+                    <h1 data-text="form-title">Add a Movie</h1>
+                    <p class="quote-text" data-text="form-quote">"Log it before you forget it"</p>
+                </section>
+
+                <form id="add-movie-form">
+
+                    <div class="input-group">
+                        <label for="movie_name" data-text="form-movie-title">Movie Title</label>
+                        <input
+                            type="text"
+                            id="movie_name"
+                            name="movie_name"
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="director" data-text="form-director">Director</label>
+                        <input
+                            type="text"
+                            id="director"
+                            name="director"
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="producer" data-text="form-producer">Producer</label>
+                        <input
+                            type="text"
+                            id="producer"
+                            name="producer"
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="notable_actors" data-text="form-actors">Notable Actors</label>
+                        <input
+                            type="text"
+                            id="notable_actors"
+                            name="notable_actors"
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="year_released" data-text="form-year">Year Released</label>
+                        <input
+                            type="number"
+                            id="year_released"
+                            name="year_released"
+                            min="1888"
+                            max="2099"
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="user_rating" data-text="form-rating">Your Rating (1–10)</label>
+                        <input
+                            type="number"
+                            id="user_rating"
+                            name="user_rating"
+                            min="1"
+                            max="10"
+                        />
+                    </div>
+
+                    <button type="submit" id="add-movie-btn" data-text="form-btn">Add Movie</button>
+
+                </form>
+
+                <p id="message"></p>
+
+                <p id="ai-reccomendation"></p>
+
+            </main>
+        </div>
+
+        <nav class="bottom-nav">
+            <button class="nav-btn" id="home-btn" data-text="nav-home">Home</button>
+            <button class="nav-btn" id="my-list-btn" data-text="nav-mylist">My List</button>
+            <button class="nav-btn" id="form-btn" data-text="nav-form">Form</button>
+        </nav>
+
+    </div>
+</body>
+</html>
