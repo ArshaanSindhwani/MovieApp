@@ -1,117 +1,114 @@
 # MovieApp
 
-> Full-stack movie tracking application developed as part of a team project at La Fosse Academy.
+> Developed as part of a collaborative team project at La Fosse Academy. My contributions focused on backend development, authentication, database design, API integration, and Docker containerisation.
 
-MovieApp allows users to register, log in, search for films, add movies to their personal list, rate watched films, and view movie information supported by external API data.
+## Overview
 
-The project demonstrates full-stack development, REST API design, relational database modelling, authentication, Docker containerisation, external API integration, and AI-assisted recommendation functionality.
+MovieApp is a full-stack movie tracking application that allows users to record watched films, manage personal ratings, and view external movie information. The application combines a responsive frontend with a Node.js and Express backend, PostgreSQL database, JWT authentication, and third-party API integrations to provide a personalised movie tracking experience.
 
 ## Technologies
 
+### Frontend
 - HTML
 - CSS
 - JavaScript
+
+### Backend
 - Node.js
-- Express.js
+- Express
+
+### Database
 - PostgreSQL
+
+### Authentication
 - JWT Authentication
+
+### APIs & Integrations
 - TMDB API
-- Python
+- Gemini AI
+
+### DevOps & Tools
 - Docker
-- Docker Compose
 - Git
 - GitHub
 
 ## Key Features
 
-- User registration and login
-- JWT-based protected routes
-- Personal movie list functionality
-- Add, view, rate, and manage watched films
-- External movie data integration using TMDB
+- Secure user registration and login using JWT authentication
+- Personal movie collection management
+- User movie ratings and reviews
+- External movie ratings and poster integration through TMDB
 - AI-powered recommendation functionality
-- PostgreSQL database with relational models
-- RESTful API structure with controllers, routes, models, and middleware
-- Dockerised backend and database setup
+- PostgreSQL relational database design
+- RESTful API architecture
+- Docker containerisation for consistent deployment
 
 ## Architecture
 
 ```text
-MovieApp
-├── Frontend Client
-│   ├── Authentication pages
-│   ├── Homepage
-│   ├── Add movie form
-│   └── Personal movie list
-│
-├── Express REST API
-│   ├── Authentication
-│   ├── Movie management
-│   ├── Rating management
-│   ├── User management
-│   └── External API integration
-│
-├── PostgreSQL Database
-│   ├── Users
-│   ├── Films
-│   └── Ratings
-│
-└── External Services
-    ├── TMDB API
-    └── Python AI recommendation service
+Frontend (HTML, CSS, JavaScript)
+            │
+            ▼
+      Express REST API
+            │
+    ┌───────┴───────┐
+    ▼               ▼
+PostgreSQL      External APIs
+ Database      (TMDB & Gemini)
 ```
 
 ## My Contribution
 
-I contributed to the backend and full-stack integration of MovieApp, focusing on authentication, database connectivity, API structure, external movie data, and local development setup.
+My primary contributions focused on the backend architecture and data layer of the application, including:
 
-My main contributions included:
-
-- Built and maintained Express routes, controllers, and models
-- Implemented JWT-based authentication for protected user functionality
-- Connected backend functionality to a PostgreSQL relational database
-- Supported movie and rating API endpoints
-- Integrated external movie data through the TMDB API
-- Worked with Docker and Docker Compose for local development
-- Helped debug frontend, backend, database, and API integration issues
-- Collaborated using Git branches, pull requests, and team-based version control
+- Developing backend functionality using Node.js and Express
+- Implementing JWT authentication and route protection
+- Designing and building PostgreSQL database models and relationships
+- Creating RESTful API endpoints
+- Integrating external movie data through the TMDB API
+- Supporting Docker-based deployment and development workflows
+- Contributing to debugging, testing, and application integration
+- Working collaboratively through Git feature branches and pull requests
 
 ## Screenshots
 
-Screenshots will be added soon.
+| Login | Register |
+|---------|---------|
+| ![Login](screenshots/login.png) | ![Register](screenshots/register.png) |
 
-```text
-screenshots
-├── homepage.png
-├── login.png
-├── register.png
-├── add-movie.png
-└── my-list.png
-```
+| Homepage | My List |
+|---------|---------|
+| ![Homepage](screenshots/homepage.png) | ![My List](screenshots/my-list.png) |
+
+| Add Movie |
+|---------|
+| ![Add Movie](screenshots/add-movie.png) |
 
 ## What I Learned
 
-This project helped me strengthen my understanding of full-stack application development and how different parts of an application connect together.
+This project strengthened my understanding of full-stack software development and how frontend, backend, database, and external services interact within a production-style application.
 
-Key learning points included:
+Key learning areas included:
 
-- Structuring a full-stack application with separate frontend and backend folders
-- Building RESTful API endpoints using Express
-- Protecting user-specific functionality with JWT authentication
-- Modelling relational data using PostgreSQL
-- Connecting backend services to external APIs
-- Using Docker to support consistent local development
-- Debugging issues across frontend, backend, database, and third-party integrations
-- Working collaboratively using Git, feature branches, and pull requests
+- Building RESTful APIs using Express
+- Implementing authentication using JWT tokens
+- Designing relational database schemas in PostgreSQL
+- Integrating third-party APIs and handling external data
+- Containerising applications with Docker
+- Debugging issues across multiple application layers
+- Working collaboratively using Git workflows and pull requests
+- Managing application data securely between frontend and backend services
 
 ## Future Improvements
 
-Potential future improvements include:
+Potential future enhancements include:
 
-- Add a more polished and responsive user interface
-- Improve AI-generated movie recommendations
-- Add user profile pages
-- Add social features for sharing movie lists
-- Add stronger backend testing coverage
-- Deploy the full application using a cloud platform
-- Add screenshots and a live demo link
+- Improved recommendation engine using AI and user preferences
+- User profile customisation
+- Watchlist functionality
+- Social features and movie sharing
+- Enhanced frontend responsiveness
+- Additional automated testing coverage
+- Cloud deployment using modern DevOps tooling
+- Real-time movie recommendation updates
+- Advanced analytics and user insights
