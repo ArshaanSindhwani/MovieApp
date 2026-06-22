@@ -1,85 +1,117 @@
 # MovieApp
 
-> Developed as part of a team project at La Fosse Academy, with contributions focused on backend architecture, authentication, API integration, database design, and containerised application deployment.
+> Full-stack movie tracking application developed as part of a team project at La Fosse Academy.
 
-MovieApp is a full-stack movie tracking platform that enables users to build personal movie collections, record ratings, view external movie information, and receive AI-powered movie recommendations.
+MovieApp allows users to register, log in, search for films, add movies to their personal list, rate watched films, and view movie information supported by external API data.
 
-The application combines a JavaScript frontend, Express backend, PostgreSQL database, TMDB integration, and a Python-based recommendation service to create a feature-rich movie discovery experience.
-
----
+The project demonstrates full-stack development, REST API design, relational database modelling, authentication, Docker containerisation, external API integration, and AI-assisted recommendation functionality.
 
 ## Technologies
 
-### Frontend
 - HTML
 - CSS
 - JavaScript
-
-### Backend
 - Node.js
-- Express
-
-### Database
+- Express.js
 - PostgreSQL
-
-### Authentication
 - JWT Authentication
-
-### External Integrations
 - TMDB API
-
-### AI & Recommendation Engine
 - Python
-- Flask
-
-### Development & Deployment
 - Docker
 - Docker Compose
 - Git
 - GitHub
 
----
-
 ## Key Features
 
 - User registration and login
-- JWT-based authentication and authorisation
-- Personal movie collection management
-- Movie rating and review functionality
-- Automatic movie poster retrieval
-- TMDB API integration
-- AI-powered movie recommendations
-- Multi-language support
-- Top-rated movie homepage
-- RESTful API architecture
-- Docker containerisation
-
----
-
-## User Journey
-
-1. Register an account and log in.
-2. Browse movie information and discover top-rated films.
-3. Add movies to your personal collection.
-4. Record ratings and reviews.
-5. View your saved movie library.
-6. Receive AI-generated movie recommendations based on your interests.
-
----
+- JWT-based protected routes
+- Personal movie list functionality
+- Add, view, rate, and manage watched films
+- External movie data integration using TMDB
+- AI-powered recommendation functionality
+- PostgreSQL database with relational models
+- RESTful API structure with controllers, routes, models, and middleware
+- Dockerised backend and database setup
 
 ## Architecture
 
 ```text
-Frontend
-    ↓
-REST API
-    ↓
-Express
-    ↓
-PostgreSQL
-    ↓
-TMDB API
+MovieApp
+├── Frontend Client
+│   ├── Authentication pages
+│   ├── Homepage
+│   ├── Add movie form
+│   └── Personal movie list
+│
+├── Express REST API
+│   ├── Authentication
+│   ├── Movie management
+│   ├── Rating management
+│   ├── User management
+│   └── External API integration
+│
+├── PostgreSQL Database
+│   ├── Users
+│   ├── Films
+│   └── Ratings
+│
+└── External Services
+    ├── TMDB API
+    └── Python AI recommendation service
+```
 
-AI Recommendation Service
-    ↓
-Python Flask
+## My Contribution
+
+I contributed to the backend and full-stack integration of MovieApp, focusing on authentication, database connectivity, API structure, external movie data, and local development setup.
+
+My main contributions included:
+
+- Built and maintained Express routes, controllers, and models
+- Implemented JWT-based authentication for protected user functionality
+- Connected backend functionality to a PostgreSQL relational database
+- Supported movie and rating API endpoints
+- Integrated external movie data through the TMDB API
+- Worked with Docker and Docker Compose for local development
+- Helped debug frontend, backend, database, and API integration issues
+- Collaborated using Git branches, pull requests, and team-based version control
+
+## Screenshots
+
+Screenshots will be added soon.
+
+```text
+screenshots
+├── homepage.png
+├── login.png
+├── register.png
+├── add-movie.png
+└── my-list.png
+```
+
+## What I Learned
+
+This project helped me strengthen my understanding of full-stack application development and how different parts of an application connect together.
+
+Key learning points included:
+
+- Structuring a full-stack application with separate frontend and backend folders
+- Building RESTful API endpoints using Express
+- Protecting user-specific functionality with JWT authentication
+- Modelling relational data using PostgreSQL
+- Connecting backend services to external APIs
+- Using Docker to support consistent local development
+- Debugging issues across frontend, backend, database, and third-party integrations
+- Working collaboratively using Git, feature branches, and pull requests
+
+## Future Improvements
+
+Potential future improvements include:
+
+- Add a more polished and responsive user interface
+- Improve AI-generated movie recommendations
+- Add user profile pages
+- Add social features for sharing movie lists
+- Add stronger backend testing coverage
+- Deploy the full application using a cloud platform
+- Add screenshots and a live demo link
